@@ -316,7 +316,7 @@ const Frontpage = () => {
         </NavLogoContainer>
         <TechButton
           variant="contained"
-          onClick={() => navigate('/upload')}
+          onClick={() => navigate('/dashboard')}
         >
           <FaRocket style={{ marginRight: '8px' }} /> Get Started
         </TechButton>
@@ -345,7 +345,7 @@ const Frontpage = () => {
         >
           <TechButton
             variant="contained"
-            onClick={() => navigate('/upload')}
+            onClick={() => navigate('/dashboard')}
           >
             <FaRocket style={{ marginRight: '12px' }} /> Start Your Analysis
           </TechButton>

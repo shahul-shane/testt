@@ -1,0 +1,19 @@
+@AdRuleAiFrontend redesign @Upload.jsx page , with navbar and content of upload page will be this:
+
+- title (opted batch processing / simple processing)
+- upload ads zip (size limit will be 2mb for normal processing , for batch processing no size limit)
+- company name input field
+- company description 
+- company category select 
+- Advanced option (optional) (only be available for batch processing)
+      - opt for custom complaince checkbox
+      - select no. of batches (based on size of zip folder dropdown will come to select nol of batches)
+              - for example if zip file is of 2mb to 10 mb only 2 option of baches will come (3 batch, 4 batch)
+
+there should also be instructions pane which will define what will be the folder structe of zip uploaded:
+
+1. main folder 
+     - text folder (containing ad text file)
+     - image folder (containing ad images)
+     - csv file (contain image and text mapping path with respect to folder)
+     - custom complaint folder with "complaintname.txt" files inside it (optional/ only be available for batch processing)

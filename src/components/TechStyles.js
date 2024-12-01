@@ -260,6 +260,11 @@ export const TechNav = styled.div`
       }
     }
 
+    .nav-label {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -278,35 +283,19 @@ export const TechNav = styled.div`
 export const TechPageContainer = styled(TechContainer)`
   width: 100vw;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 80px 0 1.5rem;
   overflow-x: hidden;
-  
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
 `;
 
 export const TechContentWrapper = styled.div`
-  background: ${techTheme.colors.surface};
-  border: 1px solid ${techTheme.colors.border};
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2rem 0;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(20px);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: ${techTheme.colors.gradient.primary};
-  }
 `;
 
 export const TechHeader = styled.div`
@@ -314,12 +303,14 @@ export const TechHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid ${techTheme.colors.border};
 
   h1 {
-    ${typography.h2}
+    color: ${techTheme.colors.text.primary};
     margin: 0;
+  }
+
+  svg {
+    color: ${techTheme.colors.primary};
   }
 
   p {
@@ -329,26 +320,49 @@ export const TechHeader = styled.div`
 `;
 
 export const TechTable = styled.div`
-  background: ${techTheme.colors.background};
-  border-radius: 12px;
-  overflow: hidden;
+  background: ${techTheme.colors.surface};
   border: 1px solid ${techTheme.colors.border};
-
-  .MuiTableCell-root {
-    color: ${techTheme.colors.text.secondary};
-    border-bottom: 1px solid ${techTheme.colors.border};
-    padding: 1rem;
+  border-radius: 16px;
+  overflow-x: auto;
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
   }
 
-  .MuiTableHead-root {
-    .MuiTableCell-root {
-      background: ${techTheme.colors.surfaceLight};
-      color: ${techTheme.colors.primary};
-      font-weight: 600;
+  th {
+    background: ${techTheme.colors.surfaceLight};
+    color: ${techTheme.colors.text.primary};
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover {
+      background: ${techTheme.colors.surface};
+    }
+
+    svg {
+      margin-left: 0.5rem;
+      opacity: 0.5;
     }
   }
 
-  .MuiTableRow-root {
+  td {
+    padding: 1rem;
+    color: ${techTheme.colors.text.secondary};
+    border-top: 1px solid ${techTheme.colors.border};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px;
+  }
+
+  tr {
     transition: all 0.3s ease;
 
     &:hover {
@@ -472,4 +486,45 @@ export const TechForm = styled.div`
       }
     }
   }
+`;
+
+export const TechTag = styled.span`
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  
+  ${props => {
+    const colors = {
+      'Batch': techTheme.colors.primary,
+      'Normal': techTheme.colors.success,
+      'Processed': techTheme.colors.success,
+      'Processing': techTheme.colors.warning
+    };
+    const color = colors[props.type || props.status];
+    
+    return `
+      background: ${color}15;
+      color: ${color};
+      border: 1px solid ${color}30;
+    `;
+  }}
+`;
+
+export const TechComplianceIndicator = styled.div`
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background: ${props => 
+    props.value >= 70 ? `${techTheme.colors.success}20` :
+    props.value >= 40 ? `${techTheme.colors.warning}20` :
+    `${techTheme.colors.accent}20`
+  };
+  color: ${props => 
+    props.value >= 70 ? techTheme.colors.success :
+    props.value >= 40 ? techTheme.colors.warning :
+    techTheme.colors.accent
+  };
+  display: inline-block;
+  font-size: 0.9rem;
 `; 
